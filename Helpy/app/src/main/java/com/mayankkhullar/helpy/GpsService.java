@@ -36,15 +36,6 @@ public class GpsService extends Service implements LocationListener {
     // Declaring a Location Manager
     protected LocationManager locationManager;
 
-    public GpsService() {
-    new GpsService();
-    }
-
-    public GpsService(Context context){
-        this.mContext = context;
-        getLocation();
-    }
-
     public Location getLocation() {
         try {
             locationManager = (LocationManager) mContext
@@ -134,8 +125,8 @@ public class GpsService extends Service implements LocationListener {
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         Location location;
             try {
-                location = getLocation();
-                Toast.makeText(this,""+location.getExtras(),Toast.LENGTH_LONG);
+               // location = getLocation();
+               // Toast.makeText(this,""+location.getExtras(),Toast.LENGTH_LONG);
 
         } catch (SecurityException e) {
             Toast.makeText(this,"Problem",Toast.LENGTH_LONG);
