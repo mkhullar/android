@@ -36,6 +36,15 @@ public class GpsService extends Service implements LocationListener {
     // Declaring a Location Manager
     protected LocationManager locationManager;
 
+    public GpsService(){
+
+    }
+
+    public GpsService(Context context){
+        this.mContext = context;
+        getLocation();
+    }
+
     public Location getLocation() {
         try {
             locationManager = (LocationManager) mContext
@@ -51,6 +60,7 @@ public class GpsService extends Service implements LocationListener {
 
             if (!isGPSEnabled && !isNetworkEnabled) {
                 // no network provider is enabled
+                Toast.makeText(this,"Disabled both",Toast.LENGTH_LONG).show();
             } else {
                 try{
                     this.canGetLocation = true;
@@ -88,7 +98,7 @@ public class GpsService extends Service implements LocationListener {
                         }
                     }
                 } catch (SecurityException e) {
-                    Toast.makeText(this,"Problem",Toast.LENGTH_LONG);
+                    Toast.makeText(this,"Problem",Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -117,20 +127,6 @@ public class GpsService extends Service implements LocationListener {
     @Override
     public void onProviderDisabled(String provider) {
 
-    }
-
-    @Override
-    public void onCreate(){
-        super.onCreate();
-        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        Location location;
-            try {
-               // location = getLocation();
-               // Toast.makeText(this,""+location.getExtras(),Toast.LENGTH_LONG);
-
-        } catch (SecurityException e) {
-            Toast.makeText(this,"Problem",Toast.LENGTH_LONG);
-        }
     }
 
     @Override
